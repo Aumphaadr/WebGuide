@@ -1,7 +1,7 @@
 /* src/components/DisplayChildElement.css */
 
 .display-layout-container .child-element {
-  border: 1px solid #ccc;
+  border: 1px solid #afafaf;
   background-color: #f0f0f0;
   min-width: 100px;
   min-height: 30px;
@@ -12,27 +12,32 @@
 
 .display-layout-container .child-element div {
   display: block;
-  background-color: rgba(151, 151, 255, 0.5);
 }
 
 .display-layout-container .child-element span {
   display: inline;
-  background-color: rgba(151, 255, 151, 0.5);
 }
 
 .display-layout-container .child-element button {
   display: inline-block;
-  background-color: rgba(255, 151, 151, 0.5);
 }
 
 .display-layout-container .child-element.div {
-  display: block;
+  background-color: rgba(151, 151, 255, 0.5);
+}
+
+.display-layout-container .child-element.span {
+  background-color: rgba(151, 255, 151, 0.5);
+}
+
+.display-layout-container .child-element.button {
+  background-color: rgba(255, 151, 151, 0.5);
 }
 
 .display-layout-container .element-tag-label {
   position: absolute;
   font-size: 0.7em;
-  color: #aaa;
+  color: #808080;
   pointer-events: none;
 }
 
