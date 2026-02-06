@@ -1,0 +1,8 @@
+/* src/components/VictimParent.css */
+.victim-parent {
+  border: 2px dashed #ccc;
+  min-height: 200px; /* Минимальная высота для лучшего визуального восприятия */
+  padding: 10px;
+  background-color: #f9f9f9;
+  overflow: auto; /* На случай, если элементы будут выходить за границы */
+}

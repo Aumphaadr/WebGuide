@@ -1,0 +1,74 @@
+/* src/components/MarginPaddingIndividualSettingsModal.css */
+
+.margin-padding-layout-container .individual-settings-modal {
+  position: absolute;
+  z-index: 1000;
+  transform: translate(-50%, -100%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  width: 350px; /* Увеличим ширину для двух колонок */
+  font-size: 0.9em;
+}
+
+.margin-padding-layout-container .modal-content .modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Две равные колонки */
+  gap: 15px; /* Отступ между колонками */
+  margin-bottom: 10px;
+}
+
+.margin-padding-layout-container .column {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin-padding-layout-container .control-group {
+  margin-bottom: 10px;
+}
+
+.margin-padding-layout-container .control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.margin-padding-layout-container .control-group input[type="range"] {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.margin-padding-layout-container .checkbox-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.margin-padding-layout-container .checkbox-wrapper input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.margin-padding-layout-container .checkbox-wrapper label {
+  font-weight: normal;
+  margin-bottom: 0; /* Убираем отступ у лейбла чекбокса */
+}
+
+.margin-padding-layout-container .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee; /* Линия над кнопками */
+  padding-top: 10px; /* Отступ сверху над кнопками */
+}
+
+.margin-padding-layout-container .modal-buttons button {
+  padding: 5px 10px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 2px;
+}
+
+.margin-padding-layout-container .modal-buttons button.delete-btn {
+  background-color: #ffcccc;
+  border-color: #cc0000;
+}

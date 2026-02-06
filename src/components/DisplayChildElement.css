@@ -1,0 +1,55 @@
+/* src/components/DisplayChildElement.css */
+
+.display-layout-container .child-element {
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  min-width: 100px;
+  min-height: 30px;
+  vertical-align: top;
+  user-select: none;
+  cursor: pointer;
+}
+
+.display-layout-container .child-element div {
+  display: block;
+}
+
+.display-layout-container .child-element span {
+  display: inline;
+}
+
+.display-layout-container .child-element button {
+  display: inline-block;
+}
+
+.display-layout-container .child-element.div {
+  display: block;
+}
+
+.display-layout-container .element-tag-label {
+  position: absolute;
+  font-size: 0.7em;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.display-layout-container .top-left {
+  top: 0;
+  left: 0;
+}
+
+.display-layout-container .bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.display-layout-container .element-content {
+  display: block;
+  width: fit-content;
+}
+
+.display-layout-container .nested-container {
+  margin-top: 5px;
+  padding-left: 10px;
+  border-left: 1px dotted #999;
+}

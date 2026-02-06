@@ -1,0 +1,73 @@
+/* src/components/WidthHeightIndividualSettingsModal.css */
+
+.width-height-layout-container .individual-settings-modal {
+  position: absolute;
+  z-index: 1000;
+  transform: translate(-50%, -100%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  width: 350px; /* Увеличим ширину для двух колонок */
+  font-size: 0.9em;
+}
+
+.width-height-layout-container .warning-message {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.width-height-layout-container .modal-content .modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Две равные колонки */
+  gap: 15px; /* Отступ между колонками */
+  margin-bottom: 10px;
+}
+
+.width-height-layout-container .column {
+  display: flex;
+  flex-direction: column;
+}
+
+.width-height-layout-container .control-group {
+  margin-bottom: 10px;
+}
+
+.width-height-layout-container .control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.width-height-layout-container .control-group input[type="range"],
+.width-height-layout-container .control-group select {
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 2px;
+}
+
+.width-height-layout-container .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.width-height-layout-container .modal-buttons button {
+  padding: 5px 10px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 2px;
+}
+
+.width-height-layout-container .modal-buttons button.delete-btn {
+  background-color: #ffcccc;
+  border-color: #cc0000;
+}

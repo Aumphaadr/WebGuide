@@ -1,0 +1,75 @@
+/* src/components/TransformIndividualSettingsModal.css */
+
+.transform-layout-container .individual-settings-modal {
+  position: absolute;
+  z-index: 1000;
+  transform: translate(-50%, -100%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  width: 400px; /* Увеличим ширину для двух колонок и большего содержимого */
+  font-size: 0.9em;
+}
+
+.transform-layout-container .modal-content .modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Две равные колонки */
+  gap: 15px; /* Отступ между колонками */
+  margin-bottom: 10px;
+}
+
+.transform-layout-container .column {
+  display: flex;
+  flex-direction: column;
+}
+
+.transform-layout-container .control-group {
+  margin-bottom: 10px;
+}
+
+.transform-layout-container .control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.transform-layout-container .control-group input[type="range"] {
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 2px;
+}
+
+.transform-layout-container .divider {
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px 0;
+}
+
+.transform-layout-container .modal-content h4 {
+  margin: 5px 0;
+  font-size: 1em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.transform-layout-container .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.transform-layout-container .modal-buttons button {
+  padding: 5px 10px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 2px;
+}
+
+.transform-layout-container .modal-buttons button.delete-btn {
+  background-color: #ffcccc;
+  border-color: #cc0000;
+}

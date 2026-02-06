@@ -1,0 +1,89 @@
+/* src/components/TransformChildElement.css */
+
+/* Стили для контейнера, в котором будут наложены реальная и видимая геометрии */
+.transform-layout-container .transform-container {
+  position: relative;
+  /* display: inline-block; - УБРАЛИ ЭТО */
+}
+
+/* Общие стили для child-element */
+.transform-layout-container .child-element {
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid #999; /* Тонкая граница для видимости */
+  /* display: inline-block; - УБРАЛИ ЭТО */
+  vertical-align: top; /* Выравнивание по верхнему краю */
+}
+
+/* Специфичные стили для реальной геометрии */
+.transform-layout-container .real-geometry {
+  /* border: 1px dashed #666; */
+  pointer-events: none; /* Реальная геометрия не должна перехватывать клики */
+  opacity: 0.6; /* Сделаем реальную геометрию полупрозрачной */
+}
+
+/* Стили для элементов div */
+.transform-layout-container .child-element.div {
+  display: block; /* div должен быть блочным */
+}
+
+/* Стили для элементов span */
+.transform-layout-container .child-element.span {
+  display: inline; /* span должен быть inline-block */
+}
+
+/* Стили для элементов button */
+.transform-layout-container .child-element.button {
+  display: inline-block; /* button должен быть inline-block */
+}
+
+/* Стили для меток */
+.transform-layout-container .dimension-labels {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2px 4px;
+  font-size: 0.8em;
+  color: #555;
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.transform-layout-container .dimension-label {
+  display: block;
+}
+
+.transform-layout-container .dimension-label.width-label {
+  margin-bottom: 2px;
+}
+
+/* Стили для меток тегов */
+.transform-layout-container .element-tag-label {
+  position: absolute;
+  font-size: 0.7em;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.transform-layout-container .top-left {
+  top: 0;
+  left: 0;
+}
+
+.transform-layout-container .bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.transform-layout-container .element-content {
+  display: block;
+  width: fit-content;
+}
+
+.transform-layout-container .nested-container {
+  margin-top: 5px;
+  padding-left: 10px;
+  border-left: 1px dotted #999;
+}

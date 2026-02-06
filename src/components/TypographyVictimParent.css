@@ -1,0 +1,17 @@
+/* src/components/TypographyVictimParent.css */
+
+/* Наследуем базовые стили из общего victim-parent */
+.typography-victim-parent {
+  border: 2px dashed #ccc;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* max-height: calc(100vh - 140px); */
+  /* overflow: auto; */
+}
+
+.typography-element {
+  padding: 10px;
+  /* Стили применяются через props styles */
+}

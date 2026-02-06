@@ -1,0 +1,26 @@
+/* src/components/BorderLayout.css */
+
+.border-layout {
+  display: flex; /* Flexbox */
+  gap: 20px; /* Отступ между панелями */
+  padding: 0 20px; /* Отступы по бокам */
+  margin-top: 20px; /* Отступ сверху */
+}
+
+.border-layout .settings-panel {
+  flex: 0 0 300px; /* Фиксированная ширина */
+  background-color: #eef2f7;
+  padding: 15px;
+  border-radius: 5px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+}
+
+.border-layout .victim-parent {
+  flex: 1; /* Занимает оставшееся пространство */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  background-color: #f9f9f9;
+}

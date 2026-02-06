@@ -1,0 +1,30 @@
+/* src/components/TransformLayout.css */
+/* Наследуем стили из WidthHeightLayout */
+.transform-layout-container {
+  margin-bottom: 20px;
+}
+
+.main-layout {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.main-layout .settings-panel {
+  flex: 0 0 250px;
+  overflow-y: auto;
+  background-color: #eef2f7;
+  padding: 15px;
+  border-radius: 5px;
+  max-height: calc(100vh - 140px);
+}
+
+.main-layout .victim-parent {
+  flex: 1;
+  border: 2px dashed #ccc;
+  min-height: 200px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  overflow: auto;
+  max-height: calc(100vh - 140px);
+}

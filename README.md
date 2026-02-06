@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# WebGuide - Интерактивный гайд по CSS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание
 
-## Available Scripts
+WebGuide — это интерактивное веб-приложение, разработанное на React, которое служит визуальным и практическим руководством по основным и продвинутым свойствам CSS. Проект позволяет пользователям в реальном времени изменять CSS-свойства HTML-элементов и наблюдать за результатами, что делает процесс изучения CSS более интуитивным и понятным.
 
-In the project directory, you can run:
+## Особенности
 
-### `npm start`
+- **Интерактивность**: Изменяйте свойства CSS и мгновенно видите результат.
+- **Модульная структура**: Каждый аспект CSS представлен в виде отдельного урока.
+- **Визуализация**: Сложные концепции, такие как `position`, `box-sizing`, `transform`, визуализируются для лучшего понимания.
+- **Реактивность**: Реализовано с использованием React, обеспечивающего отзывчивый и динамичный интерфейс.
+- **Локальная разработка**: Проект может быть запущен локально, не требует серверной части.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Установка и запуск
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1.  **Клонируйте репозиторий**:
+    ```bash
+    git clone https://github.com/Aumphaadr/WebGuide.git
+    cd WebGuide
+    ```
 
-### `npm test`
+2.  **Установите зависимости**:
+    Убедитесь, что у вас установлен Node.js. Затем выполните:
+    ```bash
+    npm install
+    ```
+    *(Эта команда установит все зависимости, указанные в файле `package.json`)*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3.  **Запустите приложение в режиме разработки**:
+    ```bash
+    npm start
+    ```
+    Приложение будет доступно по адресу `http://localhost:3000` в вашем браузере.
 
-### `npm run build`
+## Структура проекта
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+your-project-name/
+├── public/
+│   ├── favicon.ico
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── DisplayLayout.jsx
+│   │   ├── TypographyLayout.jsx
+│   │   ├── BorderLayout.jsx
+│   │   ├── MarginPaddingLayout.jsx
+│   │   ├── WidthHeightLayout.jsx
+│   │   ├── TransformLayout.jsx
+│   │   ├── BoxSizingLayout.jsx
+│   │   ├── BoxShadowLayout.jsx
+│   │   └── PositionLayout.jsx
+│   │   └── ... (и соответствующие CSS файлы)
+│   ├── fonts/
+│   │   └── ... (шрифты в формате woff2)
+│   ├── fonts.css
+│   ├── index.js
+│   ├── App.js
+│   └── App.css
+├── package.json
+├── README.md
+└── ...
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `src/components/`: Здесь находятся компоненты React для каждого урока и вспомогательные компоненты.
+- `src/fonts/` и `src/fonts.css`: Содержат шрифты и правила `@font-face` для урока по типографике.
+- `src/App.js`: Главный компонент приложения, где подключаются все уроки.
+- `public/index.html`: Основной HTML-шаблон.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Уроки
 
-### `npm run eject`
+1.  **Display (Позиционирование элементов)**: Изучение `display: block`, `inline`, `inline-block`.
+2.  **Typography (Типографика)**: Настройка `font-family`, `font-size`, `font-weight`, `font-style`, `text-decoration`, `color`.
+3.  **Border (Границы)**: Управление `border-style`, `border-width`, `border-color`, `border-radius`.
+4.  **Margin & Padding (Внешние и внутренние отступы)**: Изменение `margin` и `padding` для разных сторон.
+5.  **Width & Height (Ширина и высота)**: Установка `width` и `height`, понимание `auto`.
+6.  **Transform (Трансформации)**: Применение `transform: translate`, `scale`, `skew`, `rotate`.
+7.  **Box-Sizing (Размеры блока)**: Сравнение `content-box` и `border-box`.
+8.  **Box-Shadow (Тени блоков)**: Настройка параметров `box-shadow`.
+9.  **Position (Позиционирование)**: Изучение `position: static`, `relative`, `absolute`, `fixed`, `sticky`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Каждый урок состоит из:
+- Панели настроек (`settings-panel`).
+- Области для элементов (`victim-parent`).
+- (В большинстве случаев) Интерактивного модального окна для настройки выбранных элементов.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Технологии
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **React**: Библиотека JavaScript для создания пользовательских интерфейсов.
+- **React DOM**: Для рендеринга React-компонентов в DOM.
+- **CSS Modules / Inline Styles**: Для стилизации компонентов.
+- **Create React App**: Инструментарий для быстрого старта с React.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Автор
 
-## Learn More
+Aumphaadr
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Лицензия
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT License

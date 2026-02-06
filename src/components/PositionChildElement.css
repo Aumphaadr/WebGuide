@@ -1,0 +1,91 @@
+/* src/components/PositionChildElement.css */
+
+/* Общие стили для child-element */
+.position-layout-container .child-element {
+  user-select: none;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #999;
+  box-sizing: border-box;
+}
+
+/* Стили для элементов div */
+.position-layout-container .child-element.div {
+  display: block;
+}
+
+/* Стили для элементов span */
+.position-layout-container .child-element.span {
+  display: inline;
+}
+
+/* Стили для элементов button */
+.position-layout-container .child-element.button {
+  display: inline-block;
+}
+
+/* Стили для информации о позиции */
+.position-layout-container .position-info {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2px 4px;
+  font-size: 0.7em;
+  color: #555;
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.position-layout-container .position-label {
+  font-weight: bold;
+}
+
+.position-layout-container .size-label {
+  font-weight: normal;
+}
+
+.position-layout-container .offset-label {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.position-layout-container .z-index-label {
+  font-weight: normal;
+  font-style: italic;
+  color: #007bff; /* Синий цвет для z-index */
+}
+
+/* Стили для меток тегов */
+.position-layout-container .element-tag-label {
+  position: absolute;
+  font-size: 0.7em;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.position-layout-container .top-left {
+  top: 0;
+  left: 0;
+}
+
+.position-layout-container .bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.position-layout-container .element-content {
+  display: block;
+  width: fit-content;
+}
+
+.position-layout-container .nested-container {
+  margin-top: 5px;
+  padding-left: 10px;
+  border-left: 1px dotted #999;
+}

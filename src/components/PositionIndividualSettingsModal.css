@@ -1,0 +1,82 @@
+/* src/components/PositionIndividualSettingsModal.css */
+
+.position-layout-container .individual-settings-modal {
+  position: absolute;
+  z-index: 1000;
+  transform: translate(-50%, -100%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  width: 320px; /* Увеличим ширину для новых элементов */
+  font-size: 0.9em;
+}
+
+.position-layout-container .modal-content .modal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.position-layout-container .control-group {
+  margin-bottom: 10px;
+}
+
+.position-layout-container .control-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.position-layout-container .checkbox-and-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.position-layout-container .checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.position-layout-container .checkbox-wrapper label {
+  font-weight: normal;
+  margin-bottom: 0; /* Сброс стандартного отступа у label */
+}
+
+.position-layout-container .control-group input[type="range"],
+.position-layout-container .control-group select {
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 2px;
+}
+
+.position-layout-container .info-note {
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #e9ecef;
+  border-radius: 3px;
+  font-size: 0.8em;
+  color: #6c757d;
+}
+
+.position-layout-container .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.position-layout-container .modal-buttons button {
+  padding: 5px 10px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 2px;
+}
+
+.position-layout-container .modal-buttons button.delete-btn {
+  background-color: #ffcccc;
+  border-color: #cc0000;
+}

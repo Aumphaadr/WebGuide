@@ -1,0 +1,82 @@
+/* src/components/WidthHeightChildElement.css */
+
+.width-height-layout-container .child-element {
+  background-color: #f0f0f0;
+  min-width: 100px;
+  min-height: 30px;
+  vertical-align: top;
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid #ccc; /* Добавим border для лучшей видимости */
+}
+
+.width-height-layout-container .child-element div {
+  display: block;
+}
+
+.width-height-layout-container .child-element span {
+  display: inline;
+  /* Убедимся, что width/height игнорируется для span */
+  /* Это делается в JS через удаление из style */
+}
+
+.width-height-layout-container .child-element button {
+  display: inline-block; /* button по умолчанию inline-block */
+  /* padding: 5px 10px; */ /* Можно добавить стандартный паддинг */
+}
+
+.width-height-layout-container .child-element.div {
+  display: block;
+  width: fit-content; /* Позволим width работать */
+  height: fit-content; /* Позволим height работать */
+}
+
+.width-height-layout-container .element-tag-label {
+  position: absolute;
+  font-size: 0.7em;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.width-height-layout-container .top-left {
+  top: 0;
+  left: 0;
+}
+
+.width-height-layout-container .bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.width-height-layout-container .element-content {
+  display: block;
+  width: fit-content;
+}
+
+.width-height-layout-container .nested-container {
+  margin-top: 5px;
+  padding-left: 10px;
+  border-left: 1px dotted #999;
+}
+
+/* Стили для меток размеров */
+.width-height-layout-container .dimension-labels {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для лучшей читаемости */
+  padding: 2px 4px;
+  font-size: 0.8em;
+  color: #555;
+  border-radius: 2px;
+  z-index: 10; /* Повысим z-index, чтобы метки были поверх содержимого */
+  pointer-events: none; /* Метки не должны перехватывать клики */
+}
+
+.width-height-layout-container .dimension-label {
+  display: block;
+}
+
+.width-height-layout-container .dimension-label.width-label {
+  margin-bottom: 2px; /* Отступ между метками */
+}

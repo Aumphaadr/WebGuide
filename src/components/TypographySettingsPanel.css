@@ -1,0 +1,28 @@
+/* src/components/TypographySettingsPanel.css */
+
+/* Наследуем базовые стили из общего settings-panel */
+.typography-settings-panel {
+  background-color: #eef2f7;
+  padding: 15px;
+  border-radius: 5px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+.setting-group {
+  margin-bottom: 15px;
+}
+
+.setting-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.setting-group select,
+.setting-group input[type="range"],
+.setting-group input[type="color"] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+}

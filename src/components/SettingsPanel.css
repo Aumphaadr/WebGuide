@@ -1,0 +1,27 @@
+/* src/components/SettingsPanel.css */
+.settings-panel {
+  background-color: #eef2f7;
+  padding: 15px;
+  border-radius: 5px;
+  min-width: 300px;
+}
+
+.settings-panel button {
+  display: block;
+  margin: 5px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.clear-all-btn {
+  background-color: #ffcccc;
+  border-color: #cc0000;
+}
+
+.individual-settings-placeholder {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}

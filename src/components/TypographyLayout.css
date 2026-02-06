@@ -1,0 +1,32 @@
+/* src/components/TypographyLayout.css */
+
+.typography-layout {
+  display: flex; /* Flexbox */
+  gap: 20px; /* Отступ между панелями */
+  padding: 0 20px; /* Отступы по бокам */
+}
+
+.typography-layout .settings-panel {
+  flex: 0 0 300px; /* Фиксированная ширина для панели настроек типографики */
+  /* Наследуем стили из общего settings-panel, если хочется */
+  /* background-color: #eef2f7; */
+  /* padding: 15px; */
+  /* border-radius: 5px; */
+  /* max-height: calc(100vh - 140px); */
+  /* overflow-y: auto; */
+}
+
+.typography-layout .victim-parent {
+  flex: 1; /* Занимает оставшееся пространство */
+  /* border: 2px dashed #ccc; */
+  /* min-height: 200px; */
+  /* padding: 10px; */
+  /* background-color: #f9f9f9; */
+  /* overflow: auto; */
+  /* max-height: calc(100vh - 140px); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  background-color: #f9f9f9;
+}

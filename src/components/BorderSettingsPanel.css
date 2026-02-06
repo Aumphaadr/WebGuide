@@ -1,0 +1,84 @@
+/* src/components/BorderSettingsPanel.css */
+
+.border-settings-panel h2 {
+  margin-top: 0;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+.tab-button {
+  background: none;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+  margin-right: 2px;
+  background-color: #e0e0e0;
+}
+
+.tab-button.active {
+  background-color: #fff;
+  border-bottom: 1px solid #fff; /* Чтобы скрыть границу под активной вкладкой */
+  margin-bottom: -1px; /* Поднять на 1px, чтобы перекрыть нижнюю границу .tabs */
+  z-index: 1; /* Убедиться, что активная вкладка сверху */
+  position: relative;
+}
+
+.tab-content {
+  min-height: 200px; /* Минимальная высота для контента вкладок */
+}
+
+.tab-pane {
+  padding: 10px 0;
+}
+
+.setting-group {
+  margin-bottom: 15px;
+}
+
+.setting-group.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.setting-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.setting-group.checkbox-group label {
+  margin-bottom: 0; /* Для чекбокса не нужен отступ снизу у лейбла */
+  margin-left: 8px; /* Отступ между чекбоксом и текстом */
+  font-weight: normal; /* Сделаем текст обычным, не жирным */
+}
+
+.setting-group select,
+.setting-group input[type="range"],
+.setting-group input[type="color"],
+.setting-group button {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.setting-group input[type="range"]:disabled,
+.setting-group input[type="color"]:disabled,
+.setting-group select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.setting-group button {
+  width: auto; /* Кнопка не должна растягиваться на всю ширину */
+  background-color: #ffcccc; /* Светло-красный фон для кнопки очистки */
+  border-color: #cc0000; /* Темно-красная рамка */
+  cursor: pointer;
+  padding: 5px 10px;
+  align-self: flex-start; /* Выравнивание кнопки к началу */
+}

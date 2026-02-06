@@ -1,0 +1,20 @@
+/* src/components/BorderVictimParent.css */
+
+.border-victim-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  background-color: #f9f9f9;
+}
+
+.border-element {
+  width: 200px; /* Фиксированная ширина для наглядности */
+  height: 200px; /* Фиксированная высота для наглядности */
+  padding: 10px;
+  /* Стили применяются через props styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

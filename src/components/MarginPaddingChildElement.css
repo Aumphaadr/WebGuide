@@ -1,0 +1,50 @@
+/* src/components/MarginPaddingChildElement.css */
+
+.margin-padding-layout-container .child-element {
+  background-color: #f0f0f0;
+  min-width: 100px;
+  min-height: 30px;
+  vertical-align: top;
+  user-select: none;
+  cursor: pointer;
+}
+
+.margin-padding-layout-container .child-element div {
+  display: block;
+}
+
+.margin-padding-layout-container .child-element span {
+  display: inline;
+}
+
+.margin-padding-layout-container .child-element.div {
+  display: block;
+}
+
+.margin-padding-layout-container .element-tag-label {
+  position: absolute;
+  font-size: 0.7em;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.margin-padding-layout-container .top-left {
+  top: 0;
+  left: 0;
+}
+
+.margin-padding-layout-container .bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.margin-padding-layout-container .element-content {
+  display: block;
+  width: fit-content;
+}
+
+.margin-padding-layout-container .nested-container {
+  margin-top: 5px;
+  padding-left: 10px;
+  border-left: 1px dotted #999;
+}

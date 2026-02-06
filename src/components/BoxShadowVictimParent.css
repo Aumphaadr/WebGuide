@@ -1,0 +1,18 @@
+/* src/components/BoxShadowVictimParent.css */
+
+.box-shadow-victim-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  background-color: #f9f9f9;
+}
+
+.shadow-target {
+  /* Стили применяются через props style в компоненте */
+  /* width, height, backgroundColor, border, boxShadow */
+  /* display, alignItems, justifyContent */
+  text-align: center;
+  color: #666;
+  font-size: 1.2em;
+}

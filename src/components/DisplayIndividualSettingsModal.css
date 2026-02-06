@@ -1,0 +1,50 @@
+/* src/components/DisplayIndividualSettingsModal.css */
+
+.display-layout-container .individual-settings-modal {
+  position: absolute;
+  z-index: 1000;
+  transform: translate(-50%, -100%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  font-size: 0.9em;
+}
+
+.display-layout-container .modal-content .modal-controls {
+  margin-bottom: 10px;
+}
+
+.display-layout-container .modal-content .control-group {
+  margin-bottom: 10px;
+}
+
+.display-layout-container .modal-content label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.display-layout-container .modal-content select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.display-layout-container .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.display-layout-container .modal-buttons button {
+  padding: 5px 10px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 2px;
+}
+
+.display-layout-container .modal-buttons button.delete-btn {
+  background-color: #ffcccc;
+  border-color: #cc0000;
+}

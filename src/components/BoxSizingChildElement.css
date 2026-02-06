@@ -1,0 +1,78 @@
+/* src/components/BoxSizingChildElement.css */
+
+/* Общие стили для child-element */
+.box-sizing-layout-container .child-element {
+  user-select: none;
+  cursor: pointer;
+  vertical-align: top; /* Выравнивание по верхнему краю */
+  border: 1px solid transparent; /* Временная прозрачная граница */
+}
+
+/* Стили для элементов div */
+.box-sizing-layout-container .child-element.div {
+  display: block;
+}
+
+/* Стили для элементов span */
+.box-sizing-layout-container .child-element.span {
+  display: inline;
+}
+
+/* Стили для элементов button */
+.box-sizing-layout-container .child-element.button {
+  display: inline-block;
+}
+
+/* Стили для меток */
+.box-sizing-layout-container .size-labels {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2px 4px;
+  font-size: 1em;
+  color: #555;
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.box-sizing-layout-container .size-label {
+  display: block;
+}
+
+.box-sizing-layout-container .size-label.computed {
+  color: #007bff; /* Синий цвет для computed size */
+  font-size: 0.9em; /* Меньший размер */
+}
+
+.box-sizing-layout-container .size-label.boxSizing {
+  color: #ff006a; /* Синий цвет для box-sizing */
+  font-size: 0.9em; /* Меньший размер */
+}
+
+/* Стили для меток тегов */
+.box-sizing-layout-container .element-tag-label {
+  position: absolute;
+  font-size: 0.7em;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.box-sizing-layout-container .top-left {
+  top: 0;
+  left: 0;
+}
+
+.box-sizing-layout-container .bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.box-sizing-layout-container .element-content {
+  display: block;
+  width: fit-content;
+}
+
+.box-sizing-layout-container .nested-container {
+  margin-top: 5px;
+  padding-left: 10px;
+  border-left: 1px dotted #999;
+}

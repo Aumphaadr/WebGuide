@@ -1,38 +1,36 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* src/App.css */
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
   color: white;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* Новый стиль для основного макета */
+.main-layout {
+  display: flex; /* Flexbox */
+  gap: 20px; /* Отступ между панелями */
+  padding: 0 20px; /* Отступы по бокам */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Добавим ограничения высоты и прокрутки для панелей, если контент большой */
+.settings-panel {
+  flex: 0 0 250px; /* Фиксированная ширина 250px, не растягивается, не сжимается */
+  overflow-y: auto; /* Прокрутка по вертикали, если контент не помещается */
+  background-color: #eef2f7;
+  padding: 15px;
+  border-radius: 5px;
+  max-height: calc(100vh - 140px);
+}
+
+.victim-parent {
+  flex: 1; /* Занимает оставшееся пространство */
+  border: 2px dashed #ccc;
+  min-height: 200px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  overflow: auto; /* Прокрутка по вертикали, если контент не помещается */
+  max-height: calc(100vh - 140px);
 }
