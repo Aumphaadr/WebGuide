@@ -12,17 +12,17 @@
 
 .width-height-layout-container .child-element div {
   display: block;
+  background-color: rgba(151, 151, 255, 0.5);
 }
 
 .width-height-layout-container .child-element span {
   display: inline;
-  /* Убедимся, что width/height игнорируется для span */
-  /* Это делается в JS через удаление из style */
+  background-color: rgba(151, 255, 151, 0.5);
 }
 
 .width-height-layout-container .child-element button {
-  display: inline-block; /* button по умолчанию inline-block */
-  /* padding: 5px 10px; */ /* Можно добавить стандартный паддинг */
+  display: inline-block;
+  background-color: rgba(255, 151, 151, 0.5);
 }
 
 .width-height-layout-container .child-element.div {

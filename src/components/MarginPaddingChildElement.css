@@ -11,14 +11,17 @@
 
 .margin-padding-layout-container .child-element div {
   display: block;
+  background-color: rgba(151, 151, 255, 0.5);
 }
 
 .margin-padding-layout-container .child-element span {
   display: inline;
+  background-color: rgba(151, 255, 151, 0.5);
 }
 
 .margin-padding-layout-container .child-element.button {
   display: inline-block;
+  background-color: rgba(255, 151, 151, 0.5);
 }
 
 .margin-padding-layout-container .element-tag-label {
