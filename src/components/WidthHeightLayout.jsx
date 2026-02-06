@@ -100,8 +100,8 @@ const WidthHeightLayout = () => {
       id: Date.now(),
       type: type,
       styles: {
-          margin: 0, marginTop: 0, marginBottom: 0, marginLeft: 0, marginRight: 0,
-          padding: 10, paddingTop: 10, paddingBottom: 10, paddingLeft: 10, paddingRight: 10,
+          width: { value: 'auto', unit: 'px' },
+          height: { value: 'auto', unit: 'px' },
       },
       children: [],
     };
