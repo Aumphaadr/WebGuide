@@ -1,8 +1,8 @@
-/* public/css/fonts.css */
+/* public/fonts.css */
 
 @font-face {
     font-family: 'Lato';
-    src: url('/fonts/Lato-Regular.woff2') format('woff2');
+    src: url('./fonts/Lato-Regular.woff2') format('woff2'); /* Изменили на ./fonts/... */
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'Lato';
-    src: url('/fonts/Lato-Bold.woff2') format('woff2');
+    src: url('./fonts/Lato-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -18,7 +18,7 @@
 
 @font-face {
     font-family: 'Lato';
-    src: url('/fonts/Lato-Italic.woff2') format('woff2');
+    src: url('./fonts/Lato-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -26,7 +26,7 @@
 
 @font-face {
     font-family: 'Lato';
-    src: url('/fonts/Lato-BoldItalic.woff2') format('woff2');
+    src: url('./fonts/Lato-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
     font-display: swap;
@@ -34,7 +34,7 @@
 
 @font-face {
     font-family: 'Antiqua';
-    src: url('/fonts/Antiqua-Regular.woff2') format('woff2');
+    src: url('./fonts/Antiqua-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -42,7 +42,7 @@
 
 @font-face {
     font-family: 'Antiqua';
-    src: url('/fonts/Antiqua-Bold.woff2') format('woff2');
+    src: url('./fonts/Antiqua-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -50,7 +50,7 @@
 
 @font-face {
     font-family: 'Antiqua';
-    src: url('/fonts/Antiqua-Italic.woff2') format('woff2');
+    src: url('./fonts/Antiqua-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -58,7 +58,7 @@
 
 @font-face {
     font-family: 'Antiqua';
-    src: url('/fonts/Antiqua-BoldItalic.woff2') format('woff2');
+    src: url('./fonts/Antiqua-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
     font-display: swap;
@@ -66,7 +66,7 @@
 
 @font-face {
     font-family: 'Liberation Sans';
-    src: url('/fonts/LiberationSans-Regular.woff2') format('woff2');
+    src: url('./fonts/LiberationSans-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -74,7 +74,7 @@
 
 @font-face {
     font-family: 'Liberation Sans';
-    src: url('/fonts/LiberationSans-Bold.woff2') format('woff2');
+    src: url('./fonts/LiberationSans-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -82,7 +82,7 @@
 
 @font-face {
     font-family: 'Liberation Sans';
-    src: url('/fonts/LiberationSans-Italic.woff2') format('woff2');
+    src: url('./fonts/LiberationSans-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -90,7 +90,7 @@
 
 @font-face {
     font-family: 'Liberation Sans';
-    src: url('/fonts/LiberationSans-BoldItalic.woff2') format('woff2');
+    src: url('./fonts/LiberationSans-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
     font-display: swap;
@@ -98,7 +98,7 @@
 
 @font-face {
     font-family: 'Liberation Serif';
-    src: url('/fonts/LiberationSerif-Regular.woff2') format('woff2');
+    src: url('./fonts/LiberationSerif-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -106,7 +106,7 @@
 
 @font-face {
     font-family: 'Liberation Serif';
-    src: url('/fonts/LiberationSerif-Bold.woff2') format('woff2');
+    src: url('./fonts/LiberationSerif-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -114,7 +114,7 @@
 
 @font-face {
     font-family: 'Liberation Serif';
-    src: url('/fonts/LiberationSerif-Italic.woff2') format('woff2');
+    src: url('./fonts/LiberationSerif-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -122,7 +122,7 @@
 
 @font-face {
     font-family: 'Liberation Serif';
-    src: url('/fonts/LiberationSerif-BoldItalic.woff2') format('woff2');
+    src: url('./fonts/LiberationSerif-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
     font-display: swap;
@@ -130,7 +130,7 @@
 
 @font-face {
     font-family: 'Roboto';
-    src: url('/fonts/Roboto-Regular.woff2') format('woff2');
+    src: url('./fonts/Roboto-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -138,7 +138,7 @@
 
 @font-face {
     font-family: 'Roboto';
-    src: url('/fonts/Roboto-Bold.woff2') format('woff2');
+    src: url('./fonts/Roboto-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -146,7 +146,7 @@
 
 @font-face {
     font-family: 'Roboto';
-    src: url('/fonts/Roboto-Italic.woff2') format('woff2');
+    src: url('./fonts/Roboto-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -154,7 +154,7 @@
 
 @font-face {
     font-family: 'Roboto';
-    src: url('/fonts/Roboto-BoldItalic.woff2') format('woff2');
+    src: url('./fonts/Roboto-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
     font-display: swap;
@@ -162,7 +162,7 @@
 
 @font-face {
     font-family: 'Source Code Pro';
-    src: url('/fonts/SourceCodePro-Regular.woff2') format('woff2');
+    src: url('./fonts/SourceCodePro-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -170,7 +170,7 @@
 
 @font-face {
     font-family: 'Source Code Pro';
-    src: url('/fonts/SourceCodePro-Bold.woff2') format('woff2');
+    src: url('./fonts/SourceCodePro-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -178,7 +178,7 @@
 
 @font-face {
     font-family: 'Source CodePro';
-    src: url('/fonts/SourceCodePro-Italic.woff2') format('woff2');
+    src: url('./fonts/SourceCodePro-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -186,7 +186,7 @@
 
 @font-face {
     font-family: 'Source Code Pro';
-    src: url('/fonts/SourceCodePro-BoldItalic.woff2') format('woff2');
+    src: url('./fonts/SourceCodePro-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
     font-display: swap;
@@ -194,7 +194,7 @@
 
 @font-face {
     font-family: 'Whitney';
-    src: url('/fonts/Whitney-Regular.woff2') format('woff2');
+    src: url('./fonts/Whitney-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -202,7 +202,7 @@
 
 @font-face {
     font-family: 'Whitney';
-    src: url('/fonts/Whitney-Bold.woff2') format('woff2');
+    src: url('./fonts/Whitney-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -210,7 +210,7 @@
 
 @font-face {
     font-family: 'Whitney';
-    src: url('/fonts/Whitney-Italic.woff2') format('woff2');
+    src: url('./fonts/Whitney-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -218,7 +218,7 @@
 
 @font-face {
     font-family: 'Whitney';
-    src: url('/fonts/Whitney-BoldItalic.woff2') format('woff2');
+    src: url('./fonts/Whitney-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
     font-display: swap;
