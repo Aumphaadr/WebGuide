@@ -2,7 +2,7 @@
 import React from 'react';
 import './SettingsPanel.css'; // Можно использовать стили из первого урока
 
-const MarginPaddingSettingsPanel = ({ onAddDiv, onAddSpan, onClearAll, selectedElementId }) => {
+const MarginPaddingSettingsPanel = ({ onAddDiv, onAddSpan, onAddButton, onClearAll, selectedElementId }) => {
   // console.log("ID выбранного элемента в SettingsPanel:", selectedElementId);
 
   return (
@@ -13,6 +13,9 @@ const MarginPaddingSettingsPanel = ({ onAddDiv, onAddSpan, onClearAll, selectedE
       </button>
       <button onClick={onAddSpan}>
         Добавить строчный элемент (span)
+      </button>
+      <button onClick={onAddButton}>
+        Добавить блочно-строчный элемент (button)
       </button>
       <button onClick={onClearAll} className="clear-all-btn">
         Удалить все элементы

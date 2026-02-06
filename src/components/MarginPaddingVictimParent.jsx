@@ -1,7 +1,7 @@
 // src/components/MarginPaddingVictimParent.jsx
 import React from 'react';
-import MarginPaddingChildElement from './MarginPaddingChildElement'; // Новый компонент
-import './VictimParent.css'; // Можно использовать стили из первого урока
+import MarginPaddingChildElement from './MarginPaddingChildElement';
+import './VictimParent.css';
 
 const renderElements = (elems, onSelect, selectedElementId) => {
   return elems.map(element => (
@@ -19,7 +19,6 @@ const MarginPaddingVictimParent = ({ elements, onSelectElement, selectedElementI
 
   const handleContainerClick = (e) => {
     if (e.target === e.currentTarget) {
-      // console.log("Клик вне элементов, сбрасываем выбор.");
       onSelectElement(null, null);
     }
   };

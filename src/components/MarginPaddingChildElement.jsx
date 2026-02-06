@@ -19,7 +19,6 @@ const MarginPaddingChildElement = forwardRef(({ elementData, isSelected, onSelec
   };
 
   // --- ВОССТАНОВЛЕННАЯ ЛОГИКА ВЫЧИСЛЕНИЯ STYLES ---
-  // Теперь ?? работает корректно, так как все margin* и padding* всегда определены
   let elementStyle = {
     margin: `${styles.marginTop ?? 0}px ${styles.marginRight ?? 0}px ${styles.marginBottom ?? 0}px ${styles.marginLeft ?? 0}px`,
     padding: `${styles.paddingTop ?? 10}px ${styles.paddingRight ?? 10}px ${styles.paddingBottom ?? 10}px ${styles.paddingLeft ?? 10}px`,
@@ -39,13 +38,13 @@ const MarginPaddingChildElement = forwardRef(({ elementData, isSelected, onSelec
   return (
     <Tag
       ref={elementRef}
-      className={`child-element ${type}`}
+      className={`child-element ${type}`} // Добавим тип к классу
       style={elementStyle}
       onClick={handleClick}
     >
-      <span className="element-tag-label top-left">{type === 'div' ? '<div>' : '<span>'}</span>
+      <span className="element-tag-label top-left">{type === 'div' ? '<div>' : type === 'span' ? '<span>' : '<button>'}</span>
       <span className="element-content">Содержимое {type}</span>
-      <span className="element-tag-label bottom-right">{type === 'div' ? '</div>' : '</span>'}</span>
+      <span className="element-tag-label bottom-right">{type === 'div' ? '</div>' : type === 'span' ? '</span>' : '</button>'}</span>
 
       {children && children.length > 0 && (
         <div className="nested-container">

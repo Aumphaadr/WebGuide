@@ -17,8 +17,8 @@
   display: inline;
 }
 
-.margin-padding-layout-container .child-element.div {
-  display: block;
+.margin-padding-layout-container .child-element.button {
+  display: inline-block;
 }
 
 .margin-padding-layout-container .element-tag-label {
