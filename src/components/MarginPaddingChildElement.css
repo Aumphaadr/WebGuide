@@ -7,6 +7,7 @@
   vertical-align: top;
   user-select: none;
   cursor: pointer;
+  border: 1px solid #afafaf;
 }
 
 .margin-padding-layout-container .child-element div {

@@ -7,7 +7,7 @@
   vertical-align: top;
   user-select: none;
   cursor: pointer;
-  border: 1px solid #ccc; /* Добавим border для лучшей видимости */
+  border: 1px solid #afafaf;
 }
 
 .width-height-layout-container .child-element div {

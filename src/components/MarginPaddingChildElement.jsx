@@ -22,7 +22,6 @@ const MarginPaddingChildElement = forwardRef(({ elementData, isSelected, onSelec
   let elementStyle = {
     margin: `${styles.marginTop ?? 0}px ${styles.marginRight ?? 0}px ${styles.marginBottom ?? 0}px ${styles.marginLeft ?? 0}px`,
     padding: `${styles.paddingTop ?? 10}px ${styles.paddingRight ?? 10}px ${styles.paddingBottom ?? 10}px ${styles.paddingLeft ?? 10}px`,
-    border: '1px solid #ccc',
     position: 'relative',
   };
   // --- /ВОССТАНОВЛЕННАЯ ЛОГИКА ---
