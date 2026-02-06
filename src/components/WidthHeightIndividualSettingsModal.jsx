@@ -104,7 +104,7 @@ const WidthHeightIndividualSettingsModal = ({ elementId, elementData, onUpdateSt
                     min="0"
                     max={sliderMax.width}
                     value={localStyles.width.value}
-                    onChange={(e) => handleChange('width', 'value', e.target.value)}
+                    onChange={(e) => handleChange('width', 'value', parseInt(e.target.value, 10))}
                   />
                 </div>
               </>
@@ -129,7 +129,7 @@ const WidthHeightIndividualSettingsModal = ({ elementId, elementData, onUpdateSt
                   <select
                     id="height-unit"
                     value={localStyles.height.unit}
-                    onChange={(e) => handleChange('height', 'unit', e.target.value)}
+                    onChange={(e) => handleChange('height', 'value', parseInt(e.target.value, 10))}
                   >
                     <option value="px">px</option>
                     <option value="%">%</option>

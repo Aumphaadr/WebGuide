@@ -104,7 +104,7 @@ const TransformLayout = () => {
 
   const addChildElement = (type = 'div', parentId = null) => {
     const randomColor = generateRandomHSL();
-    const darkerColor = `hsl(${randomColor.match(/\d+/g)[0]}, ${randomColor.match(/\d+/g)[1]}%, ${Math.max(0, parseInt(randomColor.match(/\d+/g)[2]) - 20)}%)`;
+    const darkerColor = `hsl(${randomColor.match(/\d+/g)[0]}, ${randomColor.match(/\d+/g)[1]}%, ${Math.max(0, parseInt(randomColor.match(/\d+/g)[2]) - 50)}%)`;
 
     const newElement = {
       id: Date.now(),

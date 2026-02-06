@@ -73,6 +73,7 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
       <div className="modal-content">
         <div className="modal-grid">
           <div className="column">
+            <h4>Axis X</h4>
             <div className="control-group">
               <label htmlFor="width-value">Width: {localStyles.width.value}{localStyles.width.unit}</label>
               <input
@@ -84,21 +85,7 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
                 onChange={(e) => handleChange('size', 'width', e.target.value)}
               />
             </div>
-            <div className="control-group">
-              <label htmlFor="height-value">Height: {localStyles.height.value}{localStyles.height.unit}</label>
-              <input
-                id="height-value"
-                type="range"
-                min="150"
-                max="300"
-                value={localStyles.height.value}
-                onChange={(e) => handleChange('size', 'height', e.target.value)}
-              />
-            </div>
-
             <hr className="divider" />
-
-            <h4>Axis X</h4>
             <div className="control-group">
               <label htmlFor="translate-x">TranslateX: {localStyles.transform.translateX}px</label>
               <input
@@ -138,6 +125,19 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
           <div className="column">
             <h4>Axis Y</h4>
             <div className="control-group">
+              <label htmlFor="height-value">Height: {localStyles.height.value}{localStyles.height.unit}</label>
+              <input
+                id="height-value"
+                type="range"
+                min="150"
+                max="300"
+                value={localStyles.height.value}
+                onChange={(e) => handleChange('size', 'height', e.target.value)}
+              />
+            </div>
+
+            <hr className="divider" />
+            <div className="control-group">
               <label htmlFor="translate-y">TranslateY: {localStyles.transform.translateY}px</label>
               <input
                 id="translate-y"
@@ -171,21 +171,19 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
                 onChange={(e) => handleChange('transform', 'skewY', e.target.value)}
               />
             </div>
-
-            <hr className="divider" />
-
-            <div className="control-group">
-              <label htmlFor="rotate">Rotate: {localStyles.transform.rotate}deg</label>
-              <input
-                id="rotate"
-                type="range"
-                min="0"
-                max="360"
-                value={localStyles.transform.rotate}
-                onChange={(e) => handleChange('transform', 'rotate', e.target.value)}
-              />
-            </div>
           </div>
+        </div>
+        <hr className="divider" />
+        <div className="control-group">
+          <label htmlFor="rotate">Rotate: {localStyles.transform.rotate}deg</label>
+          <input
+            id="rotate"
+            type="range"
+            min="0"
+            max="360"
+            value={localStyles.transform.rotate}
+            onChange={(e) => handleChange('transform', 'rotate', e.target.value)}
+          />
         </div>
 
         <div className="modal-buttons">

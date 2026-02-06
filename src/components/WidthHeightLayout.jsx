@@ -146,6 +146,14 @@ const WidthHeightLayout = () => {
     }
   };
 
+  const handleAddButton = () => {
+    if (selectedElementId) {
+      addChildElement('button', selectedElementId);
+    } else {
+      addChildElement('button');
+    }
+  };
+
   const handleClearAll = () => {
       setElements([]);
       setSelectedElementId(null);
@@ -164,6 +172,7 @@ const WidthHeightLayout = () => {
         <WidthHeightSettingsPanel
           onAddDiv={handleAddDiv}
           onAddSpan={handleAddSpan}
+          onAddButton={handleAddButton}
           onClearAll={handleClearAll}
           selectedElementId={selectedElementId}
         />
