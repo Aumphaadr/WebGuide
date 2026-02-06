@@ -44,8 +44,8 @@ const BoxSizingChildElement = forwardRef(({ elementData, isSelected, onSelect, s
 
   // Текст для отображения computed size (визуально, не точно, но демонстрирует разницу)
   // В реальности computed size зависит от boxSizing, padding, border
-  const computedWidth = styles.boxSizing === 'border-box' ? styles.width : styles.width + (styles.padding * 2) + (styles.border * 2);
-  const computedHeight = styles.boxSizing === 'border-box' ? styles.height : styles.height + (styles.padding * 2) + (styles.border * 2);
+  const computedWidth = styles.boxSizing === 'border-box' ? styles.width : parseInt(styles.width) + (styles.padding * 2) + (styles.border * 2);
+  const computedHeight = styles.boxSizing === 'border-box' ? styles.height : parseInt(styles.height) + (styles.padding * 2) + (styles.border * 2);
   const computedSizeText = `computed: ${computedWidth}x${computedHeight}px`;
 
   return (
