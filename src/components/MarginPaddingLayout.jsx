@@ -23,17 +23,18 @@ const MarginPaddingLayout = () => {
     return null;
   };
 
-  const removeElementById = (id, items) => {
+  // Оборачиваем removeElementById в useCallback
+  const removeElementById = React.useCallback((id, items) => {
     return items.filter(item => item.id !== id).map(item => {
       if (item.children && item.children.length > 0) {
         return {
           ...item,
-          children: removeElementById(id, item.children)
+          children: removeElementById(id, item.children) // Рекурсивный вызов
         };
       }
       return item;
     });
-  };
+  }, []);
 
   const updateElementStylesById = (id, newStyles, items) => {
     return items.map(item => {
@@ -65,7 +66,7 @@ const MarginPaddingLayout = () => {
     if (!selectedElementId) return;
     setElements(prev => removeElementById(selectedElementId, prev));
     setSelectedElementId(null);
-  }, [selectedElementId]); // Зависимость: selectedElementId
+  }, [selectedElementId, removeElementById]); // Зависимости: selectedElementId, removeElementById
 
   const handleCloseModal = () => {
     setSelectedElementId(null);
@@ -81,9 +82,9 @@ const MarginPaddingLayout = () => {
     }
   };
 
-  const handleKeyDown = React.useCallback((e) => { // Оборачиваем handleKeyDown в useCallback
+  const handleKeyDown = React.useCallback((e) => {
     if (e.key === 'Delete' && selectedElementId) {
-      handleDeleteSelected(); // handleDeleteSelected теперь стабильна
+      handleDeleteSelected();
     }
   }, [selectedElementId, handleDeleteSelected]); // Зависимости: selectedElementId, handleDeleteSelected
 
@@ -92,7 +93,7 @@ const MarginPaddingLayout = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown]); // Зависимость: handleKeyDown
+  }, [handleKeyDown]);
 
   const addChildElement = (type = 'div', parentId = null) => {
     const newElement = {
