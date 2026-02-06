@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import TransformSettingsPanel from './TransformSettingsPanel';
 import TransformVictimParent from './TransformVictimParent';
 import TransformIndividualSettingsModal from './TransformIndividualSettingsModal';
-import './TransformLayout.css'; // Создадим CSS файл
+import './TransformLayout.css';
 
 const TransformLayout = () => {
   const [elements, setElements] = useState([]);
@@ -57,7 +57,6 @@ const TransformLayout = () => {
 
   const handleUpdateElementStyles = (styles) => {
     if (!selectedElementId) return;
-    // console.log('Layout: handleUpdateElementStyles called for selectedElementId:', selectedElementId, 'with styles:', styles);
     setElements(prev => updateElementStylesById(selectedElementId, styles, prev));
   };
 
@@ -81,38 +80,39 @@ const TransformLayout = () => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e) => { // Вынесена функция
     if (e.key === 'Delete' && selectedElementId) {
       handleDeleteSelected();
     }
   };
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selectedElementId]);
+  // Оборачиваем handleKeyDown в useCallback
+  const memoizedHandleKeyDown = React.useCallback(handleKeyDown, [selectedElementId]);
 
-  // --- ФУНКЦИЯ ГЕНЕРАЦИИ ЦВЕТА ---
+  useEffect(() => {
+    window.addEventListener('keydown', memoizedHandleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', memoizedHandleKeyDown);
+    };
+  }, [memoizedHandleKeyDown]); // Теперь зависимости корректны
+
   const generateRandomHSL = () => {
     const hue = Math.floor(Math.random() * 360);
-    const sat = 60 + Math.floor(Math.random() * 20); // 60-80%
-    const light = 70 + Math.floor(Math.random() * 20); // 70-90%
+    const sat = 60 + Math.floor(Math.random() * 20);
+    const light = 70 + Math.floor(Math.random() * 20);
     return `hsl(${hue}, ${sat}%, ${light}%)`;
   };
-  // --- /ФУНКЦИЯ ГЕНЕРАЦИИ ЦВЕТА ---
 
   const addChildElement = (type = 'div', parentId = null) => {
     const randomColor = generateRandomHSL();
-    const darkerColor = `hsl(${randomColor.match(/\d+/g)[0]}, ${randomColor.match(/\d+/g)[1]}%, ${Math.max(0, parseInt(randomColor.match(/\d+/g)[2]) - 50)}%)`; // Потемняем на 50%
+    const darkerColor = `hsl(${randomColor.match(/\d+/g)[0]}, ${randomColor.match(/\d+/g)[1]}%, ${Math.max(0, parseInt(randomColor.match(/\d+/g)[2]) - 20)}%)`;
 
     const newElement = {
       id: Date.now(),
       type: type,
       styles: {
-          width: { value: 200, unit: 'px' }, // Начальное значение для ширины
-          height: { value: 100, unit: 'px' }, // Начальное значение для высоты
+          width: { value: 200, unit: 'px' },
+          height: { value: 100, unit: 'px' },
           transform: {
             translateX: 0,
             translateY: 0,
@@ -123,7 +123,7 @@ const TransformLayout = () => {
             rotate: 0,
           },
           backgroundColor: randomColor,
-          realBackgroundColor: darkerColor, // Цвет для реальной геометрии
+          realBackgroundColor: darkerColor,
       },
       children: [],
     };

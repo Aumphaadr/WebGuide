@@ -1,22 +1,20 @@
 // src/components/WidthHeightIndividualSettingsModal.jsx
 import React, { useState, useEffect } from 'react';
-import './WidthHeightIndividualSettingsModal.css'; // Создадим CSS файл
+import './WidthHeightIndividualSettingsModal.css';
 
 const WidthHeightIndividualSettingsModal = ({ elementId, elementData, onUpdateStyles, onDelete, onClose, position }) => {
-  // Инициализируем состояние с текущими стилями элемента или значениями по умолчанию
-  const initialStyles = elementData.styles || {
+  // Используем useMemo для вычисления начальных стилей
+  const initialStyles = React.useMemo(() => elementData.styles || {
     width: { value: 'auto', unit: 'px' },
     height: { value: 'auto', unit: 'px' },
-  };
+  }, [elementData.styles]); // Зависимость от elementData.styles
 
   const [localStyles, setLocalStyles] = useState(initialStyles);
-  const [showWarning, setShowWarning] = useState(elementData.type === 'span');
 
-  // Обновляем состояние и предупреждение при смене элемента
+  // Обновляем состояние при смене элемента
   useEffect(() => {
-    setLocalStyles(elementData.styles || initialStyles);
-    setShowWarning(elementData.type === 'span');
-  }, [elementData.styles, elementData.type, initialStyles]);
+    setLocalStyles(initialStyles);
+  }, [initialStyles]); // Теперь зависимости корректны
 
   const handleChange = (dimension, property, value) => {
     setLocalStyles(prev => ({
@@ -32,7 +30,6 @@ const WidthHeightIndividualSettingsModal = ({ elementId, elementData, onUpdateSt
     if (checked) {
       handleChange(dimension, 'value', 'auto');
     } else {
-      // Если снимаем галочку, устанавливаем значение 0 и px по умолчанию
       if (dimension === 'width') {
         handleChange(dimension, 'value', 0);
         handleChange(dimension, 'unit', 'px');
@@ -46,38 +43,35 @@ const WidthHeightIndividualSettingsModal = ({ elementId, elementData, onUpdateSt
   const handleSave = () => {
     console.log('WHModal: Save clicked. Calling onUpdateStyles with:', localStyles);
     onUpdateStyles(localStyles);
-    onClose(); // Закрываем модальное окно
+    onClose();
   };
 
   const handleCancel = () => {
     console.log('WHModal: Cancel clicked. Resetting to initial styles:', initialStyles);
     setLocalStyles(initialStyles);
-    onClose(); // Закрываем модальное окно
+    onClose();
   };
 
   const handleDeleteClick = () => {
     console.log('WHModal: Delete clicked. Calling onDelete for elementId:', elementId);
     onDelete();
-    onClose(); // Закрываем модальное окно после удаления
+    onClose();
   };
 
-  // --- ВЫЧИСЛЕНИЕ МАКСИМАЛЬНОГО ЗНАЧЕНИЯ СЛАЙДЕРА ---
   const sliderMax = {
     width: localStyles.width.unit === '%' ? 100 : 1000,
     height: localStyles.height.unit === '%' ? 100 : 1000,
   };
-  // --- /ВЫЧИСЛЕНИЕ ---
 
   return (
     <div className="individual-settings-modal" style={{ top: `${position.top}px`, left: `${position.left}px` }}>
       <div className="modal-content">
-        {showWarning && (
+        {elementData.type === 'span' && (
           <div className="warning-message">
             ⚠️ Свойства width и height не работают для inline-элементов (span).
           </div>
         )}
         <div className="modal-grid">
-          {/* Левый столбец - Width */}
           <div className="column">
             <div className="control-group">
               <label htmlFor="width-auto">Width: Auto</label>
@@ -110,14 +104,13 @@ const WidthHeightIndividualSettingsModal = ({ elementId, elementData, onUpdateSt
                     min="0"
                     max={sliderMax.width}
                     value={localStyles.width.value}
-                    onChange={(e) => handleChange('width', 'value', parseInt(e.target.value, 10))}
+                    onChange={(e) => handleChange('width', 'value', e.target.value)}
                   />
                 </div>
               </>
             )}
           </div>
 
-          {/* Правый столбец - Height */}
           <div className="column">
             <div className="control-group">
               <label htmlFor="height-auto">Height: Auto</label>
@@ -150,7 +143,7 @@ const WidthHeightIndividualSettingsModal = ({ elementId, elementData, onUpdateSt
                     min="0"
                     max={sliderMax.height}
                     value={localStyles.height.value}
-                    onChange={(e) => handleChange('height', 'value', parseInt(e.target.value, 10))}
+                    onChange={(e) => handleChange('height', 'value', e.target.value)}
                   />
                 </div>
               </>

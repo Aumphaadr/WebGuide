@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import './PositionIndividualSettingsModal.css';
 
 const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyles, onDelete, onClose, position }) => {
-  // Инициализируем состояние с текущими стилями элемента или значениями по умолчанию
-  const initialStyles = elementData.styles || {
+  // Используем useMemo для вычисления начальных стилей
+  const initialStyles = React.useMemo(() => elementData.styles || {
     position: 'static',
     display: 'block',
     top: { value: 0, isAuto: true },
@@ -15,20 +15,18 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
     backgroundColor: '#eee',
     width: { value: 300, isAuto: false },
     height: { value: 150, isAuto: false },
-  };
+  }, [elementData.styles]); // Зависимость от elementData.styles
 
   const [localStyles, setLocalStyles] = useState(initialStyles);
 
   // Обновляем состояние при смене элемента
   useEffect(() => {
-    setLocalStyles(elementData.styles || initialStyles);
-  }, [elementData.styles, initialStyles]);
+    setLocalStyles(initialStyles);
+  }, [initialStyles]); // Теперь зависимости корректны
 
   const handleChange = (property, subProperty, value) => {
-    // console.log("handleChange called for", property, subProperty, "with value", value);
     setLocalStyles(prev => {
       if (['width', 'height', 'top', 'right', 'bottom', 'left', 'zIndex'].includes(property)) {
-        // Обновляем вложенный объект
         return {
           ...prev,
           [property]: {
@@ -37,7 +35,6 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
           }
         };
       } else {
-        // Обновляем простое свойство
         return {
           ...prev,
           [property]: typeof value === 'string' ? value : parseFloat(value)
@@ -53,19 +50,19 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
   const handleSave = () => {
     console.log('PositionModal: Save clicked. Calling onUpdateStyles with:', localStyles);
     onUpdateStyles(localStyles);
-    onClose(); // Закрываем модальное окно
+    onClose();
   };
 
   const handleCancel = () => {
     console.log('PositionModal: Cancel clicked. Resetting to initial styles:', initialStyles);
     setLocalStyles(initialStyles);
-    onClose(); // Закрываем модальное окно
+    onClose();
   };
 
   const handleDeleteClick = () => {
     console.log('PositionModal: Delete clicked. Calling onDelete for elementId:', elementId);
     onDelete();
-    onClose(); // Закрываем модальное окно после удаления
+    onClose();
   };
 
   const currentPos = localStyles.position;
@@ -89,7 +86,6 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
             </select>
           </div>
 
-          {/* Ширина */}
           <div className="control-group">
             <label htmlFor="width-value">Width: {localStyles.width.isAuto ? 'auto' : `${localStyles.width.value}px`}</label>
             <div className="checkbox-and-slider">
@@ -115,7 +111,6 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
             </div>
           </div>
 
-          {/* Высота */}
           <div className="control-group">
             <label htmlFor="height-value">Height: {localStyles.height.isAuto ? 'auto' : `${localStyles.height.value}px`}</label>
             <div className="checkbox-and-slider">
@@ -141,7 +136,6 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
             </div>
           </div>
 
-          {/* Показываем Offsets только для relative, absolute, fixed, sticky */}
           {(currentPos === 'relative' || currentPos === 'absolute' || currentPos === 'fixed' || currentPos === 'sticky') && (
             <>
               <div className="control-group">
@@ -243,7 +237,6 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
             </>
           )}
 
-          {/* Показываем Z-Index только для relative, absolute, fixed, sticky */}
           {(currentPos === 'relative' || currentPos === 'absolute' || currentPos === 'fixed' || currentPos === 'sticky') && (
             <div className="control-group">
               <label htmlFor="z-index-value">Z-Index: {localStyles.zIndex.isAuto ? 'auto' : localStyles.zIndex.value}</label>
@@ -271,7 +264,6 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
             </div>
           )}
 
-          {/* Примечание для Fixed/Sticky */}
           {currentPos === 'fixed' && (
             <div className="info-note">
               <small>Fixed: Относительно Viewport (окна браузера).</small>

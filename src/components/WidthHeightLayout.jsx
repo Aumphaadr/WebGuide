@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import WidthHeightSettingsPanel from './WidthHeightSettingsPanel';
 import WidthHeightVictimParent from './WidthHeightVictimParent';
 import WidthHeightIndividualSettingsModal from './WidthHeightIndividualSettingsModal';
-import './WidthHeightLayout.css'; // Создадим CSS файл
+import './WidthHeightLayout.css';
 
 const WidthHeightLayout = () => {
   const [elements, setElements] = useState([]);
@@ -57,7 +57,6 @@ const WidthHeightLayout = () => {
 
   const handleUpdateElementStyles = (styles) => {
     if (!selectedElementId) return;
-    // console.log('Layout: handleUpdateElementStyles called for selectedElementId:', selectedElementId, 'with styles:', styles);
     setElements(prev => updateElementStylesById(selectedElementId, styles, prev));
   };
 
@@ -81,28 +80,29 @@ const WidthHeightLayout = () => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e) => { // Вынесена функция
     if (e.key === 'Delete' && selectedElementId) {
       handleDeleteSelected();
     }
   };
 
+  // Оборачиваем handleKeyDown в useCallback
+  const memoizedHandleKeyDown = React.useCallback(handleKeyDown, [selectedElementId]);
+
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', memoizedHandleKeyDown);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', memoizedHandleKeyDown);
     };
-  }, [selectedElementId]);
+  }, [memoizedHandleKeyDown]); // Теперь зависимости корректны
 
   const addChildElement = (type = 'div', parentId = null) => {
     const newElement = {
       id: Date.now(),
       type: type,
       styles: {
-          // margin: 0, marginTop: 0, marginBottom: 0, marginLeft: 0, marginRight: 0,
-          // padding: 10, paddingTop: 10, paddingBottom: 10, paddingLeft: 10, paddingRight: 10,
-          width: { value: 'auto', unit: 'px' }, // Структура для width
-          height: { value: 'auto', unit: 'px' }, // Структура для height
+          margin: 0, marginTop: 0, marginBottom: 0, marginLeft: 0, marginRight: 0,
+          padding: 10, paddingTop: 10, paddingBottom: 10, paddingLeft: 10, paddingRight: 10,
       },
       children: [],
     };
@@ -146,14 +146,6 @@ const WidthHeightLayout = () => {
       addChildElement('span');
     }
   };
-  // Новый тип элемента - button
-  const handleAddButton = () => {
-    if (selectedElementId) {
-      addChildElement('button', selectedElementId);
-    } else {
-      addChildElement('button');
-    }
-  };
 
   const handleClearAll = () => {
       setElements([]);
@@ -169,11 +161,10 @@ const WidthHeightLayout = () => {
 
   return (
     <div className="width-height-layout-container">
-      <div className="main-layout"> {/* Можно использовать тот же класс для стиля макета */}
+      <div className="main-layout">
         <WidthHeightSettingsPanel
           onAddDiv={handleAddDiv}
           onAddSpan={handleAddSpan}
-          onAddButton={handleAddButton}
           onClearAll={handleClearAll}
           selectedElementId={selectedElementId}
         />

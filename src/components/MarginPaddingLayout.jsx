@@ -57,7 +57,6 @@ const MarginPaddingLayout = () => {
 
   const handleUpdateElementStyles = (styles) => {
     if (!selectedElementId) return;
-    console.log('Layout: handleUpdateElementStyles called for selectedElementId:', selectedElementId, 'with styles:', styles);
     setElements(prev => updateElementStylesById(selectedElementId, styles, prev));
   };
 
@@ -67,11 +66,9 @@ const MarginPaddingLayout = () => {
     setSelectedElementId(null);
   };
 
-  // --- НОВАЯ ФУНКЦИЯ ---
   const handleCloseModal = () => {
-    setSelectedElementId(null); // Сбрасываем выбор, что приведёт к скрытию модального окна
+    setSelectedElementId(null);
   };
-  // --- /НОВАЯ ФУНКЦИЯ ---
 
   const handleShowModal = (elementRef) => {
     if (elementRef) {
@@ -83,18 +80,21 @@ const MarginPaddingLayout = () => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e) => { // Вынесена функция
     if (e.key === 'Delete' && selectedElementId) {
       handleDeleteSelected();
     }
   };
 
+  // Оборачиваем handleKeyDown в useCallback
+  const memoizedHandleKeyDown = React.useCallback(handleKeyDown, [selectedElementId]);
+
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', memoizedHandleKeyDown);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', memoizedHandleKeyDown);
     };
-  }, [selectedElementId]);
+  }, [memoizedHandleKeyDown]); // Теперь зависимости корректны
 
   const addChildElement = (type = 'div', parentId = null) => {
     const newElement = {
@@ -181,7 +181,7 @@ const MarginPaddingLayout = () => {
           elementData={getElementById(selectedElementId, elements)}
           onUpdateStyles={handleUpdateElementStyles}
           onDelete={handleDeleteSelected}
-          onClose={handleCloseModal} // Передаём новую функцию
+          onClose={handleCloseModal}
           position={modalPosition}
         />
       )}

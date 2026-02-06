@@ -1,48 +1,47 @@
 // src/components/BoxSizingIndividualSettingsModal.jsx
 import React, { useState, useEffect } from 'react';
-import './BoxSizingIndividualSettingsModal.css'; // Создадим CSS файл
+import './BoxSizingIndividualSettingsModal.css';
 
 const BoxSizingIndividualSettingsModal = ({ elementId, elementData, onUpdateStyles, onDelete, onClose, position }) => {
-  // Инициализируем состояние с текущими стилями элемента или значениями по умолчанию
-  const initialStyles = elementData.styles || {
+  // Используем useMemo для вычисления начальных стилей
+  const initialStyles = React.useMemo(() => elementData.styles || {
     width: 300,
     height: 150,
     boxSizing: 'content-box',
     padding: 10,
     border: 1,
-  };
+  }, [elementData.styles]); // Зависимость от elementData.styles
 
   const [localStyles, setLocalStyles] = useState(initialStyles);
 
   // Обновляем состояние при смене элемента
   useEffect(() => {
-    setLocalStyles(elementData.styles || initialStyles);
-  }, [elementData.styles, initialStyles]);
+    setLocalStyles(initialStyles);
+  }, [initialStyles]); // Теперь зависимости корректны
 
   const handleChange = (property, value) => {
-    // console.log("handleChange called for", property, "with value", value);
     setLocalStyles(prev => ({
       ...prev,
-      [property]: typeof value === 'string' ? value : parseFloat(value) // Убедимся, что числа остаются числами
+      [property]: typeof value === 'string' ? value : parseFloat(value)
     }));
   };
 
   const handleSave = () => {
     console.log('BoxSizingModal: Save clicked. Calling onUpdateStyles with:', localStyles);
     onUpdateStyles(localStyles);
-    onClose(); // Закрываем модальное окно
+    onClose();
   };
 
   const handleCancel = () => {
     console.log('BoxSizingModal: Cancel clicked. Resetting to initial styles:', initialStyles);
     setLocalStyles(initialStyles);
-    onClose(); // Закрываем модальное окно
+    onClose();
   };
 
   const handleDeleteClick = () => {
     console.log('BoxSizingModal: Delete clicked. Calling onDelete for elementId:', elementId);
     onDelete();
-    onClose(); // Закрываем модальное окно после удаления
+    onClose();
   };
 
   return (

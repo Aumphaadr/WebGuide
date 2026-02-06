@@ -1,10 +1,10 @@
 // src/components/TransformIndividualSettingsModal.jsx
 import React, { useState, useEffect } from 'react';
-import './TransformIndividualSettingsModal.css'; // Создадим CSS файл
+import './TransformIndividualSettingsModal.css';
 
 const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyles, onDelete, onClose, position }) => {
-  // Инициализируем состояние с текущими стилями элемента или значениями по умолчанию
-  const initialStyles = elementData.styles || {
+  // Используем useMemo для вычисления начальных стилей
+  const initialStyles = React.useMemo(() => elementData.styles || {
     width: { value: 200, unit: 'px' },
     height: { value: 100, unit: 'px' },
     transform: {
@@ -16,14 +16,14 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
       skewY: 0,
       rotate: 0,
     },
-  };
+  }, [elementData.styles]); // Зависимость от elementData.styles
 
   const [localStyles, setLocalStyles] = useState(initialStyles);
 
   // Обновляем состояние при смене элемента
   useEffect(() => {
-    setLocalStyles(elementData.styles || initialStyles);
-  }, [elementData.styles, initialStyles]);
+    setLocalStyles(initialStyles);
+  }, [initialStyles]); // Теперь зависимости корректны
 
   const handleChange = (category, property, value) => {
     if (category === 'size') {
@@ -31,7 +31,7 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
         ...prev,
         [property]: {
           ...prev[property],
-          value: parseFloat(value) // Для size value может быть числом
+          value: parseFloat(value)
         }
       }));
     } else if (category === 'transform') {
@@ -39,7 +39,7 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
         ...prev,
         transform: {
           ...prev.transform,
-          [property]: parseFloat(value) // Для transform value может быть числом
+          [property]: parseFloat(value)
         }
       }));
     }
@@ -48,28 +48,31 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
   const handleSave = () => {
     console.log('TransformModal: Save clicked. Calling onUpdateStyles with:', localStyles);
     onUpdateStyles(localStyles);
-    onClose(); // Закрываем модальное окно
+    onClose();
   };
 
   const handleCancel = () => {
     console.log('TransformModal: Cancel clicked. Resetting to initial styles:', initialStyles);
     setLocalStyles(initialStyles);
-    onClose(); // Закрываем модальное окно
+    onClose();
   };
 
   const handleDeleteClick = () => {
     console.log('TransformModal: Delete clicked. Calling onDelete for elementId:', elementId);
     onDelete();
-    onClose(); // Закрываем модальное окно после удаления
+    onClose();
+  };
+
+  const sliderMax = {
+    width: localStyles.width.unit === '%' ? 100 : 1000,
+    height: localStyles.height.unit === '%' ? 100 : 1000,
   };
 
   return (
     <div className="individual-settings-modal" style={{ top: `${position.top}px`, left: `${position.left}px` }}>
       <div className="modal-content">
         <div className="modal-grid">
-          {/* Левый столбец - Размеры и Transform X */}
           <div className="column">
-            <h4>Axis X</h4>
             <div className="control-group">
               <label htmlFor="width-value">Width: {localStyles.width.value}{localStyles.width.unit}</label>
               <input
@@ -81,9 +84,21 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
                 onChange={(e) => handleChange('size', 'width', e.target.value)}
               />
             </div>
+            <div className="control-group">
+              <label htmlFor="height-value">Height: {localStyles.height.value}{localStyles.height.unit}</label>
+              <input
+                id="height-value"
+                type="range"
+                min="150"
+                max="300"
+                value={localStyles.height.value}
+                onChange={(e) => handleChange('size', 'height', e.target.value)}
+              />
+            </div>
 
             <hr className="divider" />
 
+            <h4>Axis X</h4>
             <div className="control-group">
               <label htmlFor="translate-x">TranslateX: {localStyles.transform.translateX}px</label>
               <input
@@ -113,32 +128,15 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
                 id="skew-x"
                 type="range"
                 min="-90"
-                max="90" // Стандартный диапазон для skew
+                max="90"
                 value={localStyles.transform.skewX}
                 onChange={(e) => handleChange('transform', 'skewX', e.target.value)}
               />
             </div>
           </div>
 
-          {/* Правый столбец - Transform Y и Rotate */}
-
-          
           <div className="column">
             <h4>Axis Y</h4>
-
-            <div className="control-group">
-              <label htmlFor="height-value">Height: {localStyles.height.value}{localStyles.height.unit}</label>
-              <input
-                id="height-value"
-                type="range"
-                min="150"
-                max="300"
-                value={localStyles.height.value}
-                onChange={(e) => handleChange('size', 'height', e.target.value)}
-              />
-            </div>
-
-            <hr className="divider" />
             <div className="control-group">
               <label htmlFor="translate-y">TranslateY: {localStyles.transform.translateY}px</label>
               <input
@@ -168,27 +166,26 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
                 id="skew-y"
                 type="range"
                 min="-90"
-                max="90" // Стандартный диапазон для skew
+                max="90"
                 value={localStyles.transform.skewY}
                 onChange={(e) => handleChange('transform', 'skewY', e.target.value)}
               />
             </div>
 
-            
-          </div>
-        </div>
-        <hr className="divider" />
+            <hr className="divider" />
 
-        <div className="control-group">
-            <label htmlFor="rotate">Rotate: {localStyles.transform.rotate}deg</label>
-            <input
-            id="rotate"
-            type="range"
-            min="0"
-            max="360"
-            value={localStyles.transform.rotate}
-            onChange={(e) => handleChange('transform', 'rotate', e.target.value)}
-            />
+            <div className="control-group">
+              <label htmlFor="rotate">Rotate: {localStyles.transform.rotate}deg</label>
+              <input
+                id="rotate"
+                type="range"
+                min="0"
+                max="360"
+                value={localStyles.transform.rotate}
+                onChange={(e) => handleChange('transform', 'rotate', e.target.value)}
+              />
+            </div>
+          </div>
         </div>
 
         <div className="modal-buttons">

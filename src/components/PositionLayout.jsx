@@ -41,7 +41,6 @@ const PositionLayout = () => {
         const updatedStyles = { ...item.styles };
         Object.keys(newStyles).forEach(key => {
           if (['width', 'height', 'top', 'right', 'bottom', 'left', 'zIndex'].includes(key)) {
-            // Если обновляется один из объектов, заменяем весь объект
             updatedStyles[key] = { ...newStyles[key] };
           } else {
             updatedStyles[key] = newStyles[key];
@@ -64,7 +63,6 @@ const PositionLayout = () => {
 
   const handleUpdateElementStyles = (styles) => {
     if (!selectedElementId) return;
-    // console.log('Layout: handleUpdateElementStyles called for selectedElementId:', selectedElementId, 'with styles:', styles);
     setElements(prev => updateElementStylesById(selectedElementId, styles, prev));
   };
 
@@ -88,23 +86,26 @@ const PositionLayout = () => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e) => { // Вынесена функция
     if (e.key === 'Delete' && selectedElementId) {
       handleDeleteSelected();
     }
   };
 
+  // Оборачиваем handleKeyDown в useCallback
+  const memoizedHandleKeyDown = React.useCallback(handleKeyDown, [selectedElementId]);
+
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', memoizedHandleKeyDown);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', memoizedHandleKeyDown);
     };
-  }, [selectedElementId]);
+  }, [memoizedHandleKeyDown]); // Теперь зависимости корректны
 
   const generateRandomHSL = () => {
     const hue = Math.floor(Math.random() * 360);
-    const sat = 60 + Math.floor(Math.random() * 20); // 60-80%
-    const light = 70 + Math.floor(Math.random() * 20); // 70-90%
+    const sat = 60 + Math.floor(Math.random() * 20);
+    const light = 70 + Math.floor(Math.random() * 20);
     return `hsl(${hue}, ${sat}%, ${light}%)`;
   };
 
@@ -117,13 +118,11 @@ const PositionLayout = () => {
       styles: {
           position: 'static',
           display: 'block',
-          // --- НОВАЯ СТРУКТУРА ДЛЯ OFFSETS И Z-INDEX ---
-          top: { value: 0, isAuto: true }, // По умолчанию auto
+          top: { value: 0, isAuto: true },
           right: { value: 0, isAuto: true },
           bottom: { value: 0, isAuto: true },
           left: { value: 0, isAuto: true },
-          zIndex: { value: 0, isAuto: true }, // По умолчанию auto
-          // --- /НОВАЯ СТРУКТУРА ---
+          zIndex: { value: 0, isAuto: true },
           backgroundColor: randomColor,
           width: { value: 300, isAuto: false },
           height: { value: 150, isAuto: false },

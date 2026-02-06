@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import BoxSizingSettingsPanel from './BoxSizingSettingsPanel';
 import BoxSizingVictimParent from './BoxSizingVictimParent';
 import BoxSizingIndividualSettingsModal from './BoxSizingIndividualSettingsModal';
-import './BoxSizingLayout.css'; // Создадим CSS файл
+import './BoxSizingLayout.css';
 
 const BoxSizingLayout = () => {
   const [elements, setElements] = useState([]);
@@ -57,7 +57,6 @@ const BoxSizingLayout = () => {
 
   const handleUpdateElementStyles = (styles) => {
     if (!selectedElementId) return;
-    // console.log('Layout: handleUpdateElementStyles called for selectedElementId:', selectedElementId, 'with styles:', styles);
     setElements(prev => updateElementStylesById(selectedElementId, styles, prev));
   };
 
@@ -81,27 +80,28 @@ const BoxSizingLayout = () => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e) => { // Вынесена функция
     if (e.key === 'Delete' && selectedElementId) {
       handleDeleteSelected();
     }
   };
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selectedElementId]);
+  // Оборачиваем handleKeyDown в useCallback
+  const memoizedHandleKeyDown = React.useCallback(handleKeyDown, [selectedElementId]);
 
-  // --- ФУНКЦИЯ ГЕНЕРАЦИИ ЦВЕТА ---
+  useEffect(() => {
+    window.addEventListener('keydown', memoizedHandleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', memoizedHandleKeyDown);
+    };
+  }, [memoizedHandleKeyDown]); // Теперь зависимости корректны
+
   const generateRandomHSL = () => {
     const hue = Math.floor(Math.random() * 360);
-    const sat = 60 + Math.floor(Math.random() * 20); // 60-80%
-    const light = 70 + Math.floor(Math.random() * 20); // 70-90%
+    const sat = 60 + Math.floor(Math.random() * 20);
+    const light = 70 + Math.floor(Math.random() * 20);
     return `hsl(${hue}, ${sat}%, ${light}%)`;
   };
-  // --- /ФУНКЦИЯ ГЕНЕРАЦИИ ЦВЕТА ---
 
   const addChildElement = (type = 'div', parentId = null) => {
     const randomColor = generateRandomHSL();
@@ -110,11 +110,11 @@ const BoxSizingLayout = () => {
       id: Date.now(),
       type: type,
       styles: {
-          width: 300, // Начальное значение для ширины (число)
-          height: 150, // Начальное значение для высоты (число)
-          boxSizing: 'content-box', // Начальное значение для box-sizing
-          padding: 10, // Начальное значение для padding (число)
-          border: 1, // Начальное значение для border (число)
+          width: 300,
+          height: 150,
+          boxSizing: 'content-box',
+          padding: 10,
+          border: 1,
           backgroundColor: randomColor,
       },
       children: [],

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import DisplaySettingsPanel from './DisplaySettingsPanel';
 import DisplayVictimParent from './DisplayVictimParent';
 import DisplayIndividualSettingsModal from './DisplayIndividualSettingsModal';
-import './DisplayLayout.css'; // Создадим CSS файл
+import './DisplayLayout.css';
 
 const DisplayLayout = () => {
   const [elements, setElements] = useState([]);
@@ -61,7 +61,7 @@ const DisplayLayout = () => {
   };
 
   const handleCloseModal = () => {
-    setSelectedElementId(null); // Сбрасываем выбор, что приведёт к скрытию модального окна
+    setSelectedElementId(null);
   };
 
   const handleShowModal = (elementRef) => {
@@ -74,18 +74,21 @@ const DisplayLayout = () => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e) => { // Вынесена функция
     if (e.key === 'Delete' && selectedElementId) {
       handleDeleteSelected();
     }
   };
 
+  // Оборачиваем handleKeyDown в useCallback
+  const memoizedHandleKeyDown = React.useCallback(handleKeyDown, [selectedElementId]);
+
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', memoizedHandleKeyDown);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', memoizedHandleKeyDown);
     };
-  }, [selectedElementId]);
+  }, [memoizedHandleKeyDown]); // Теперь зависимости корректны
 
   const addChildElement = (type = 'div', parentId = null) => {
     const newElement = {
@@ -157,7 +160,7 @@ const DisplayLayout = () => {
 
   return (
     <div className="display-layout-container">
-      <div className="main-layout"> {/* Используем общий класс для макета */}
+      <div className="main-layout">
         <DisplaySettingsPanel
           onAddDiv={handleAddDiv}
           onAddSpan={handleAddSpan}
@@ -178,7 +181,7 @@ const DisplayLayout = () => {
           elementData={getElementById(selectedElementId, elements)}
           onUpdateType={handleUpdateElementType}
           onDelete={handleDeleteSelected}
-          onClose={handleCloseModal} // Передаём новую функцию
+          onClose={handleCloseModal}
           position={modalPosition}
         />
       )}
