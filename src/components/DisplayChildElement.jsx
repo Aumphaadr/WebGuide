@@ -20,7 +20,7 @@ const DisplayChildElement = forwardRef(({ elementData, isSelected, onSelect, sel
 
   let highlightStyle = {};
   if (isSelected) {
-    highlightStyle = { outline: '2px solid blue' };
+    highlightStyle = { boxShadow: '0 0 0 2px blue inset' };
   }
 
   return (
