@@ -60,11 +60,12 @@ const MarginPaddingLayout = () => {
     setElements(prev => updateElementStylesById(selectedElementId, styles, prev));
   };
 
-  const handleDeleteSelected = () => {
+  // Оборачиваем handleDeleteSelected в useCallback
+  const handleDeleteSelected = React.useCallback(() => {
     if (!selectedElementId) return;
     setElements(prev => removeElementById(selectedElementId, prev));
     setSelectedElementId(null);
-  };
+  }, [selectedElementId]); // Зависимость: selectedElementId
 
   const handleCloseModal = () => {
     setSelectedElementId(null);
@@ -80,22 +81,18 @@ const MarginPaddingLayout = () => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = React.useCallback((e) => { // Оборачиваем handleKeyDown в useCallback
     if (e.key === 'Delete' && selectedElementId) {
-      handleDeleteSelected();
+      handleDeleteSelected(); // handleDeleteSelected теперь стабильна
     }
-  };
-
-  // Оборачиваем handleKeyDown в useCallback
-  // Зависимости: handleDeleteSelected (использует selectedElementId)
-  const memoizedHandleKeyDown = React.useCallback(handleKeyDown, [selectedElementId, handleDeleteSelected]);
+  }, [selectedElementId, handleDeleteSelected]); // Зависимости: selectedElementId, handleDeleteSelected
 
   useEffect(() => {
-    window.addEventListener('keydown', memoizedHandleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener('keydown', memoizedHandleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [memoizedHandleKeyDown]);
+  }, [handleKeyDown]); // Зависимость: handleKeyDown
 
   const addChildElement = (type = 'div', parentId = null) => {
     const newElement = {
