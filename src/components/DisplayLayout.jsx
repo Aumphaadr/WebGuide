@@ -74,21 +74,22 @@ const DisplayLayout = () => {
     }
   };
 
-  const handleKeyDown = (e) => { // Вынесена функция
+  const handleKeyDown = (e) => {
     if (e.key === 'Delete' && selectedElementId) {
       handleDeleteSelected();
     }
   };
 
   // Оборачиваем handleKeyDown в useCallback
-  const memoizedHandleKeyDown = React.useCallback(handleKeyDown, [selectedElementId]);
+  // Зависимости: handleDeleteSelected (использует selectedElementId)
+  const memoizedHandleKeyDown = React.useCallback(handleKeyDown, [selectedElementId, handleDeleteSelected]);
 
   useEffect(() => {
     window.addEventListener('keydown', memoizedHandleKeyDown);
     return () => {
       window.removeEventListener('keydown', memoizedHandleKeyDown);
     };
-  }, [memoizedHandleKeyDown]); // Теперь зависимости корректны
+  }, [memoizedHandleKeyDown]);
 
   const addChildElement = (type = 'div', parentId = null) => {
     const newElement = {

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import './TransformIndividualSettingsModal.css';
 
 const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyles, onDelete, onClose, position }) => {
-  // Используем useMemo для вычисления начальных стилей
   const initialStyles = React.useMemo(() => elementData.styles || {
     width: { value: 200, unit: 'px' },
     height: { value: 100, unit: 'px' },
@@ -16,14 +15,13 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
       skewY: 0,
       rotate: 0,
     },
-  }, [elementData.styles]); // Зависимость от elementData.styles
+  }, [elementData.styles]);
 
   const [localStyles, setLocalStyles] = useState(initialStyles);
 
-  // Обновляем состояние при смене элемента
   useEffect(() => {
     setLocalStyles(initialStyles);
-  }, [initialStyles]); // Теперь зависимости корректны
+  }, [initialStyles]);
 
   const handleChange = (category, property, value) => {
     if (category === 'size') {
@@ -63,10 +61,12 @@ const TransformIndividualSettingsModal = ({ elementId, elementData, onUpdateStyl
     onClose();
   };
 
-  const sliderMax = {
-    width: localStyles.width.unit === '%' ? 100 : 1000,
-    height: localStyles.height.unit === '%' ? 100 : 1000,
-  };
+  // --- УДАЛЯЕМ НЕИСПОЛЬЗУЕМУЮ ПЕРЕМЕННУЮ ---
+  // const sliderMax = {
+  //   width: localStyles.width.unit === '%' ? 100 : 1000,
+  //   height: localStyles.height.unit === '%' ? 100 : 1000,
+  // };
+  // --- /УДАЛЯЕМ НЕИСПОЛЬЗУЕМУЮ ПЕРЕМЕННУЮ ---
 
   return (
     <div className="individual-settings-modal" style={{ top: `${position.top}px`, left: `${position.left}px` }}>
