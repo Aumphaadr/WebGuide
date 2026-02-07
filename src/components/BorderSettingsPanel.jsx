@@ -4,15 +4,15 @@ import './BorderSettingsPanel.css'; // Создадим CSS файл
 
 // Опции для border-style
 const BORDER_STYLE_OPTIONS = [
-  { value: 'none', label: 'None' },
-  { value: 'solid', label: 'Solid' },
-  { value: 'dashed', label: 'Dashed' },
-  { value: 'dotted', label: 'Dotted' },
-  { value: 'double', label: 'Double' },
-  { value: 'groove', label: 'Groove' },
-  { value: 'ridge', label: 'Ridge' },
-  { value: 'inset', label: 'Inset' },
-  { value: 'outset', label: 'Outset' },
+  { value: 'none', label: 'none' },
+  { value: 'solid', label: 'solid' },
+  { value: 'dashed', label: 'dashed' },
+  { value: 'dotted', label: 'dotted' },
+  { value: 'double', label: 'double' },
+  { value: 'groove', label: 'groove' },
+  { value: 'ridge', label: 'ridge' },
+  { value: 'inset', label: 'inset' },
+  { value: 'outset', label: 'outset' },
 ];
 
 const BorderSettingsPanel = ({ allStyles, sideStyles, onUpdateAllStyle, onUpdateSideStyle, onResetSideStyle }) => {

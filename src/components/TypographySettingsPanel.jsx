@@ -4,9 +4,9 @@ import './TypographySettingsPanel.css'; // Создадим CSS файл
 
 // Определим доступные шрифты
 const FONT_OPTIONS = [
-  { value: 'serif', label: 'Serif' },
-  { value: 'sans-serif', label: 'Sans-serif' },
-  { value: 'monospace', label: 'Monospace' },
+  { value: 'serif', label: 'serif' },
+  { value: 'sans-serif', label: 'sans-serif' },
+  { value: 'monospace', label: 'monospace' },
   { value: 'Lato', label: 'Lato' },
   { value: 'Antiqua', label: 'Antiqua' },
   { value: 'Liberation Sans', label: 'Liberation Sans' },
@@ -17,19 +17,19 @@ const FONT_OPTIONS = [
 ];
 
 const WEIGHT_OPTIONS = [
-  { value: 'normal', label: 'Normal' },
-  { value: 'bold', label: 'Bold' },
+  { value: 'normal', label: 'normal' },
+  { value: 'bold', label: 'bold' },
 ];
 
 const STYLE_OPTIONS = [
-  { value: 'normal', label: 'Normal' },
-  { value: 'italic', label: 'Italic' },
+  { value: 'normal', label: 'normal' },
+  { value: 'italic', label: 'italic' },
 ];
 
 const DECORATION_OPTIONS = [
-  { value: 'none', label: 'None' },
-  { value: 'underline', label: 'Underline' },
-  { value: 'overline', label: 'Overline' },
+  { value: 'none', label: 'none' },
+  { value: 'underline', label: 'underline' },
+  { value: 'overline', label: 'overline' },
 ];
 
 const TypographySettingsPanel = ({ styles, onUpdateStyle }) => {
