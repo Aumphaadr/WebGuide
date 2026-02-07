@@ -163,25 +163,25 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
                 </div>
               </div>
               <div className="control-group">
-                <label htmlFor="right-value">Right: {localStyles.right.isAuto ? 'auto' : `${localStyles.right.value}px`}</label>
+                <label htmlFor="left-value">Left: {localStyles.left.isAuto ? 'auto' : `${localStyles.left.value}px`}</label>
                 <div className="checkbox-and-slider">
                   <div className="checkbox-wrapper">
                     <input
-                      id="right-auto"
+                      id="left-auto"
                       type="checkbox"
-                      checked={localStyles.right.isAuto}
-                      onChange={(e) => handleChange('right', 'isAuto', e.target.checked)}
+                      checked={localStyles.left.isAuto}
+                      onChange={(e) => handleChange('left', 'isAuto', e.target.checked)}
                     />
-                    <label htmlFor="right-auto">Auto</label>
+                    <label htmlFor="left-auto">Auto</label>
                   </div>
-                  {!localStyles.right.isAuto && (
+                  {!localStyles.left.isAuto && (
                     <input
-                      id="right-value"
+                      id="left-value"
                       type="range"
                       min="-100"
                       max="100"
-                      value={localStyles.right.value}
-                      onChange={(e) => handleChange('right', 'value', e.target.value)}
+                      value={localStyles.left.value}
+                      onChange={(e) => handleChange('left', 'value', e.target.value)}
                     />
                   )}
                 </div>
@@ -211,25 +211,25 @@ const PositionIndividualSettingsModal = ({ elementId, elementData, onUpdateStyle
                 </div>
               </div>
               <div className="control-group">
-                <label htmlFor="left-value">Left: {localStyles.left.isAuto ? 'auto' : `${localStyles.left.value}px`}</label>
+                <label htmlFor="right-value">Right: {localStyles.right.isAuto ? 'auto' : `${localStyles.right.value}px`}</label>
                 <div className="checkbox-and-slider">
                   <div className="checkbox-wrapper">
                     <input
-                      id="left-auto"
+                      id="right-auto"
                       type="checkbox"
-                      checked={localStyles.left.isAuto}
-                      onChange={(e) => handleChange('left', 'isAuto', e.target.checked)}
+                      checked={localStyles.right.isAuto}
+                      onChange={(e) => handleChange('right', 'isAuto', e.target.checked)}
                     />
-                    <label htmlFor="left-auto">Auto</label>
+                    <label htmlFor="right-auto">Auto</label>
                   </div>
-                  {!localStyles.left.isAuto && (
+                  {!localStyles.right.isAuto && (
                     <input
-                      id="left-value"
+                      id="right-value"
                       type="range"
                       min="-100"
                       max="100"
-                      value={localStyles.left.value}
-                      onChange={(e) => handleChange('left', 'value', e.target.value)}
+                      value={localStyles.right.value}
+                      onChange={(e) => handleChange('right', 'value', e.target.value)}
                     />
                   )}
                 </div>
